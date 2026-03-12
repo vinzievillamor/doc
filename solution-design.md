@@ -3,10 +3,10 @@ This guide describes the processes and best practices in creating and managing s
 
 Solution design document is the living document of an initiative. It contains comprehensive information about what changes being introduced, why this is  important to be implemented, and how will this be built before the actual implementation proceeds.
 
-As mentioned, there will be 2 parts in this document:
+There are 2 main parts in this document:
 
 1. Solution background
-2. Detailed solution design
+2. Solution Architecture
 
 <b> When do we consider creating solution design document? </b>
 
@@ -27,9 +27,10 @@ There are 3 things to ask ourselves:
 ##### Context *
 > This section describes the "What" and "Why" of this initiative. 
 
-> Provide a brief summary of the problem statement. You may start with describing the current state (existing architecture) first. What are its limitation and challenges. It's best to show a diagram here. This is the "Situation" in STAR.
+> Provide a brief summary of the problem statement. Indicate details why this is important to build. What business and platform capability does it enable? Provide the key business drivers and their use case.
 
-> Then, follow with brief high-level summary of the solution. In STAR, this is the "Task". Indicate details why this is important to build. What business and platform capability does it enable? Provide the key business drivers and their use case.
+##### Current State *
+> Start describing the current state (existing architecture) first. What are its limitation and challenges. Provide a diagram here.
 
 ##### Scope *
 
@@ -75,3 +76,34 @@ Out Scope *
 | Pros & Cons |
 | Risk |
 | Estimated cost and effort |
+
+##### Key Design Decisions
+> List the key design decisions that influence this solution
+
+| Decision | Rationale | Alternative Considered | 
+| --- | --- | --- |
+
+##### Risks
+> Call out any technical, security, performance, and other risks introduced by this solution and how they are mitigated
+
+| Risk | Probability | Impact | Mitigation | Risk Score
+| --- | --- | --- | --- | --- |
+| Risk format "If {cause}, then {effect}"
+
+#### Solution Architecture
+> This section describe the "How" will the solution be implemented. This provides high-level architecture diagram.
+
+##### Platform diagram
+> This shows the physical diagram, components where your solution is built. For instance, AWS or GCP managed services, etc.
+
+##### Logical diagram
+> This shows the interaction between components, more focused on the business logic. We can leverage different diagrams here, for example, sequence diagrams, flowchart, etc.
+
+#### Other considerations
+##### Security consideration
+##### Scalability consideration
+##### Data models
+##### Test strategy
+##### Monitoring
+##### Error handling
+##### Release process
