@@ -1,7 +1,7 @@
 # Data Engineering using Microsoft Fabric
 
 ## Data Engineering
-Data engineering is the practice of designing, building, and maintaining of pipelines to collect, transform, and store raw data from source systems. It enables organizations or businesses make data-driven decisions by providing curated data for end users.
+Data engineering is the practice of designing, building, and maintaining of pipelines to collect, transform, and store raw data. It enables organizations or businesses make data-driven decisions by providing curated data for end users.
 
 ## What is Lakehouse?
 Lakehouse is the combination of Data Warehouse and Data Lake. It is a data storage with capabilities to store structured, semi-structure, and unstructured data optimized for analytical queries and reporting.
@@ -12,7 +12,7 @@ Data Lake - stores semi-structure and unstructured data. Flexible to store any t
 ## How does Lakehouse work?
 Lakehouse uses Delta Lake format to gain understanding about the data. It also relies on underlying storage service to store objects (e.g., S3 on AWS, GCS on GCP, OneLake on Azure).  
 
-When a parquet file gets uploaded to Lakehouse, the engine creates Delta log, which is a folder that contains files that tells about the descriptive context or additional information of the data (e.g., when was it uploaded? what is the schema? etc.). Parquet file defines its schema at the bottom of its payload.
+When a parquet file gets uploaded to Lakehouse, the engine creates Delta log, which is a folder containing files that tells about the descriptive context or additional information on the data (e.g., when was it uploaded? what is the schema? etc.). Parquet file defines its schema at the bottom of its payload.
 
 If a DML operation gets committed, a corresponding JSON file will be created inside the Delta log folder. This enables the Lakehouse to have the capabitilies of Data warehouse, such as time travel, ACID transaction, indexing.
 
