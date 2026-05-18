@@ -54,6 +54,27 @@ When you upload / dump a file to Lakehouse,  you may generate a table on top of 
 
 In loading a table from this file, the engine converts it into a Delta Lake format, together with Delta log and metadata folder.
 
+Table has two types:
+- External = data files resides outside table itself and is user-specified. Deleting the table does not purge the data.
+- Managed = contains data files in actual table itself. Deleting the table purges the actual data.
+
+**What made Delta Lake Format so important?**
+It enables capabilities that is only applicable for tables in Delta Lake Format.
+
+For example:
+
+**Time travel** - allows your table to be restored to a particular version  
+
+**Optimization** - runs optimization to improve performance
+- OPTIMIZE command helps to reduce number of data files by merging them into a bigger and fewer files 
+- Z-ORDER sorts the data which helps improve query performance by skipping data in unnecessary partitions
+- V-ORDER helps to compress the data files to improve reading speed
+- Vacuum helps to save storage space by removing data files based on retention
+
+**Streaming** - allows you to increment data to destination without having to read from entire source. 
+- Enforces idempotency
+- Streaming only works on external tables.
+- checkpoint location must be included in streaming.
 
 ## Parquet file
 Columnar-oriented data storage format designed for efficient storage and retrieval of big data for analytics.
@@ -90,3 +111,23 @@ Fabric Data Factory allows you run Extract, Transform, and Load data ingested in
 
 Pipeline is a set of activities to accomplish a certain goal.
 Activity is the task or action needed to complete the pipeline.
+
+## Notebook
+Notebook allows you to explore, analyze, build and process data using different frameworks.
+
+### PySpark
+One of the frameworks designed to efficiently process Big data. It is the Python wrapper of Apache Spark.
+
+#### Pools in Fabric
+Starter pool - predefined cluster / pool of nodes. 
+Custom pool - customized cluster / pool of nodes based on customer specification.
+
+#### NotebookUtils
+A built-in package that helps to easily perform common tasks in Fabric Notebook. (e.g., work with filesystems, chain Notebooks, work with secrets, etc.)
+
+#### SparkStreaming
+Allows to stream data from source to destination. It guarantees data idempotency by only applying changes in data or incrementing it.
+
+### Environment
+Allows you to create an isolated environment containing specific dependencies, runtime, configuration, resources, etc. for Notebooks.
+
