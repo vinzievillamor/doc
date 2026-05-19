@@ -131,3 +131,10 @@ Allows to stream data from source to destination. It guarantees data idempotency
 ### Environment
 Allows you to create an isolated environment containing specific dependencies, runtime, configuration, resources, etc. for Notebooks.
 
+## CI/CD in Fabric
+CI/CD is a software development practice that automates the process of building, testing, and deploying code, enabling faster and more reliable software releases.
+
+In Fabric
+- DEV workspace must be connected to CI (this is typically your main branch)
+- Branch out from DEV workspace (similar to creating a feature branch from main branch)
+- Common practice is environments are isolated by workspace. In Medallion Architecture: DEV-Bronze, DEV-Silver, DEV-Gold, UAT-Bronze, ...
