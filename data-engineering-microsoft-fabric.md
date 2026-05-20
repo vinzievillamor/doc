@@ -43,7 +43,7 @@ Microsoft Fabric is an end-to-end data analytics platform that goes from data la
 ### OneLake
 OneLake is a single, unified data storage system. It is a shared storage used by all items across workspaces within the organization.
 
-## Fabric Lakehouse
+### Fabric Lakehouse
 Microsoft Fabric Lakehouse is a combination of Data Lake and Warehouse with capabilities to store and manage structure, unstructure, semi-structured data. OneLake is the actual storage solution behind Fabric Lakehouse.
 
 Lakehouse has two components:
@@ -76,10 +76,10 @@ For example:
 - Streaming only works on external tables.
 - checkpoint location must be included in streaming.
 
-## Parquet file
+### Parquet file
 Columnar-oriented data storage format designed for efficient storage and retrieval of big data for analytics.
 
-## Fabric Shortcut
+### Fabric Shortcut
 Fabric shortcuts are objects in OneLake that point to other storage locations. It can be internal or external to OneLake (e.g., S3 on AWS, GCS on GCP, etc.). It is to guarantee that there is only one true copy of data and prevent data duplication.
 
 Shortcut can be:
@@ -89,12 +89,12 @@ Shortcut can be:
 
 On top of this, you can enable caching in shortcuts as well. This reduces egress cost for transmitted data going across regions, cloud providers, and public internet by creating a temporary local copy. Take note, you have to manually reset the cache to reflect the latest changes in data.
 
-### Internal shortcut
+#### Internal shortcut
 Use case
 
 - If the data resides on the same OneLake, but multiple workspaces want to gain access of it, then use internal shortcut to create virtual pointer to it.
 
-### External shortcut
+#### External shortcut
 Use case
 
 - If the data is residing outside OneLake or even Fabric, for example S3 on AWS or GCS on GCP, you can still directly access the data without copying it by creating an external shortcut in your workspace.
@@ -106,16 +106,16 @@ For example, if you have multiple delta files within the same folder, you can cr
 ### SQL endpoint
 SQL endpoint is an endpoint used to gain access to Lakehouse and run SQL query against it for data analysis. Take note, a SQL endpoint is restricted to read access only. You won't be able to execute write queries to modify / create data.
 
-## Fabric Data Factory
+### Fabric Data Factory
 Fabric Data Factory allows you run Extract, Transform, and Load data ingested into OneLake by managing pipelines to orchestrate data workflows.
 
 Pipeline is a set of activities to accomplish a certain goal.
 Activity is the task or action needed to complete the pipeline.
 
-## Notebook
+### Notebook
 Notebook allows you to explore, analyze, build and process data using different frameworks.
 
-### PySpark
+#### PySpark
 One of the frameworks designed to efficiently process Big data. It is the Python wrapper of Apache Spark.
 
 #### Pools in Fabric
@@ -128,13 +128,21 @@ A built-in package that helps to easily perform common tasks in Fabric Notebook.
 #### SparkStreaming
 Allows to stream data from source to destination. It guarantees data idempotency by only applying changes in data or incrementing it.
 
-### Environment
+#### Environment
 Allows you to create an isolated environment containing specific dependencies, runtime, configuration, resources, etc. for Notebooks.
 
-## CI/CD in Fabric
+### CI/CD in Fabric
 CI/CD is a software development practice that automates the process of building, testing, and deploying code, enabling faster and more reliable software releases.
 
 In Fabric
 - DEV workspace must be connected to CI (this is typically your main branch)
 - Branch out from DEV workspace (similar to creating a feature branch from main branch)
 - Common practice is environments are isolated by workspace. In Medallion Architecture: DEV-Bronze, DEV-Silver, DEV-Gold, UAT-Bronze, ...
+
+### Data Warehouse
+After data transformation or processing (ETL), we load the data to Data Warehouse. It is used to build the reports and visualizations to enable stakeholders make data-driven decisions.
+
+#### Dimensional modeling
+A form of data model which stores data in the form of dimension and fact tables. 
+- Fact table stores the numerical measures / information
+- Dimension table stores the additional context for fact table
