@@ -154,3 +154,24 @@ A form of data model which stores data in the form of dimension and fact tables.
 - COPY INTO (if data comes from Azure Data Lake Storage)
 - CTAS (Create Table As Select via Spark) 
 > CTAS is the most preferred approach loading gold layer table if the silver data is from OneLake
+
+#### Basic concepts
+Function - is a reusable block of code to perform a specific task. In T-SQL, it is used for returning a result. It does not support other DML operations.
+
+Stored Procedure - similar with function, but it supports any DML operation.
+
+#### Semantic model
+In fabric, it is the business-friendly data layers built on top of raw data. 
+- Import mode = data is pulled from source and stored in memory. Needs to ensure that data is up to date.
+- Direct query = data is pulled directly from underlying data source.
+- Direct lake = loads data directly from Delta tables into the analysis engine's in-memory cache. Falls back to DirectQuery if needed.
+
+#### Security
+There are three ways to secure Data warehouse in Fabric
+1. Warehouse level = grant specific permission to access warehouse
+2. Column level = denying access for a particular column. This is applied inside Data Warehouse
+    - Create a role with members
+    - Deny the role to access a column
+3. Row level = only grants access to rows owned by the owner or specific users
+    - Create a predicate function
+    - Create a security policy applying the predicate function targeted to the table
