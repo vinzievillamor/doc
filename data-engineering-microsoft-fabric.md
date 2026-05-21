@@ -142,7 +142,15 @@ In Fabric
 ### Data Warehouse
 After data transformation or processing (ETL), we load the data to Data Warehouse. It is used to build the reports and visualizations to enable stakeholders make data-driven decisions.
 
+Only managed and delta tables are supported in Warehouse
+
 #### Dimensional modeling
 A form of data model which stores data in the form of dimension and fact tables. 
 - Fact table stores the numerical measures / information
 - Dimension table stores the additional context for fact table
+
+#### Loading data to warehouse
+- ETL FLOW (via Data Pipeline Get Data activity)
+- COPY INTO (if data comes from Azure Data Lake Storage)
+- CTAS (Create Table As Select via Spark) 
+> CTAS is the most preferred approach loading gold layer table if the silver data is from OneLake
