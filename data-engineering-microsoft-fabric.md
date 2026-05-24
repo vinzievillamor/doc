@@ -180,7 +180,27 @@ There are three ways to secure Data warehouse in Fabric
 
 ### Guides
 
-#### 1. To Gold layer
+#### 1. To Bronze Layer
+Read and understand how data will be extracted from source. Most likely, source systems expose API endpoints.
+- What kind of authentication it uses?
+
+Once set, start ingest the raw data from source systems.
+
+- Always use Azure Key Vault for storing secrets, keys, credentials. Similar to AWS Secrets Manager.
+- Load the raw data to Lakehouse as-is. No transformation and enrichment applied to the data.
+- Best practice is to use Hive partition as folder structure. `yyyy/MM/dd/{file}`
+
+#### 2. To Silver layer
+
+This is the phase where the Bronze data is transformed (e.g., adding new column, removing nulls, type casting, building relationships, flattening of columns)
+
+Enriched data is saved on Lakehouse table as Delta format.
+
+1. Read data to PySpark DataFrame
+2. Transform data
+3. Write data to Silver Lakehouse table
+
+#### 3. To Gold layer
 
 Identify facts and dimension tables
 
@@ -202,6 +222,6 @@ Build fact table
 - Create a fact table (e.g., CarSales)
 - Join dimension tables
 
-#### 2. Visualize Data using Power BI
+#### 4. Visualize Data using Power BI
 - Create report using the semantic model
 - Create necessary measures
