@@ -175,3 +175,33 @@ There are three ways to secure Data warehouse in Fabric
 3. Row level = only grants access to rows owned by the owner or specific users
     - Create a predicate function
     - Create a security policy applying the predicate function targeted to the table
+
+---
+
+### Guides
+
+#### 1. To Gold layer
+
+Identify facts and dimension tables
+
+Dimensions are attributes that descriptive context that describe the facts and are not items that you apply calculation on. Mostly used for filtering, sorting, and grouping.
+
+Facts are numerical measures and attributes that you apply the calculation on (e.g., average, max, min)
+
+After it's been identified
+1. Create the Fabric Data Warehouse
+2. Create the gold schema
+2. Create a new SQL query to build the semantic model (star schema most of the time)
+> Most of the gold layer work just involves building the semantic model. 
+> Creating dimension and fact tables are pure T-SQL territory.
+
+Build dimension tables
+- Create the dimension tables + DateDimension table
+
+Build fact table
+- Create a fact table (e.g., CarSales)
+- Join dimension tables
+
+#### 2. Visualize Data using Power BI
+- Create report using the semantic model
+- Create necessary measures
